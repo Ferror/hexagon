@@ -11,11 +11,4 @@ public class NumberTest
         Number number = new Number(2);
         Assertions.assertEquals(2, number.toInteger());
     }
-
-    @Test
-    public void testItFails()
-    {
-        Number number = new Number(2);
-        Assertions.assertEquals(1, number.toInteger());
-    }
 }
