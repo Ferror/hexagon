@@ -2,7 +2,7 @@ package domain;
 
 public class Number
 {
-    private Integer value;
+    private final Integer value;
 
     public Number(Integer value)
     {
