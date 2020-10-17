@@ -7,4 +7,7 @@
     <groupId>pl.malcherczyk</groupId>
     <artifactId>Hexagon</artifactId>
     <version>1.0</version>
+    <properties>
+        <src.dir>src</src.dir>
+    </properties>
 </project>
