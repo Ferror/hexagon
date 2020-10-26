@@ -10,7 +10,6 @@ public class GraphicApp
 {
     public static void main(String[] args)
     {
-//        JFrame frame = new JFrame();
         //Sidebar
         Sidebar sidebar = new Sidebar();
         sidebar.addButton("a");
