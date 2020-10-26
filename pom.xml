@@ -7,6 +7,8 @@
     <groupId>pl.malcherczyk</groupId>
     <artifactId>Hexagon</artifactId>
     <version>1.0</version>
+    <name>Hexagon</name>
+    <packaging>jar</packaging>
     <properties>
         <src.dir>src</src.dir>
         <test.dir>test</test.dir>
@@ -16,6 +18,29 @@
     <build>
         <sourceDirectory>${src.dir}</sourceDirectory>
         <testSourceDirectory>${test.dir}</testSourceDirectory>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.2.0</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <mainClass>presenter.graphic.GraphicApp</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
     <dependencies>
         <dependency>
