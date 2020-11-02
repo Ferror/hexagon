@@ -5,14 +5,26 @@ import software.amazon.awssdk.auth.credentials.AwsBasicCredentials;
 import software.amazon.awssdk.auth.credentials.StaticCredentialsProvider;
 import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.dynamodb.DynamoDbClient;
+import java.io.File;
 
 public class ConsoleApp
 {
     public static void main(String[] args)
     {
-        Dotenv dotenv = Dotenv
+        File dotenvFile = new File(".env.local");
+        Dotenv dotenv;
+
+        if (dotenvFile.exists()) {
+            dotenv = Dotenv
                 .configure()
+                .filename(".env.local")
                 .load();
+        } else {
+            dotenv = Dotenv
+                .configure()
+                .filename(".env")
+                .load();
+        }
 
         AwsBasicCredentials credentials = AwsBasicCredentials.create(
             dotenv.get("AWS_ACCESS_KEY_ID"),
@@ -24,6 +36,7 @@ public class ConsoleApp
             .credentialsProvider(StaticCredentialsProvider.create(credentials))
             .build();
 
-        System.out.println("Hello");
+        System.out.println("Console");
+        System.out.println(client.listTables().tableNames().get(0));
     }
 }
