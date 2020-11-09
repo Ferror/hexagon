@@ -9,14 +9,14 @@ public class HomeHandler implements HttpHandler
     @Override
     public void handle(HttpExchange exchange) throws IOException
     {
-        String response;
+        String path = exchange.getRequestURI().getPath();
+        int code = 404;
 
-        if (exchange.getRequestURI().getPath().endsWith("1")) {
-            response = "{\"code\": 204}";
-        } else {
-            response = "{\"code\": 200}";
+        if (path.equals("/currency")) {
+            code = 204;
         }
 
+        String response = "{\"code\": " + code + ", \"route\": " + path + "}";
         exchange.getResponseHeaders().add("Content-Type", "text/json");
         exchange.sendResponseHeaders(200, response.length());
         exchange.getResponseBody().write(response.getBytes());

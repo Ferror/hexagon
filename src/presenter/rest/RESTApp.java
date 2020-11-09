@@ -10,7 +10,7 @@ public class RESTApp
     public static void main(String[] args) throws IOException
     {
         HttpServer server = HttpServer.create(new InetSocketAddress("localhost", 8765), 0);
-        server.createContext("/test", new HomeHandler());
+        server.createContext("/", new HomeHandler());
         server.setExecutor(null);
         server.start();
     }
