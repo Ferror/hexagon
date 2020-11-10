@@ -1,5 +1,6 @@
 package framework;
 
+import infrastructure.memory.MemoryCurrencyStorage;
 import software.amazon.awssdk.auth.credentials.AwsBasicCredentials;
 import software.amazon.awssdk.auth.credentials.AwsCredentialsProvider;
 import software.amazon.awssdk.regions.Region;
@@ -36,6 +37,7 @@ public class Container
                 .credentialsProvider((AwsCredentialsProvider) this.services.get("aws.credentials"))
                 .build()
         );
+        this.services.put("domain.currency.CurrencyStorage", new MemoryCurrencyStorage());
     }
 
     public Object get(String serviceName)
