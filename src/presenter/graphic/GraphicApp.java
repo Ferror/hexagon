@@ -1,5 +1,7 @@
 package presenter.graphic;
 
+import framework.Container;
+import framework.Environment;
 import presenter.graphic.button.ButtonActionListener;
 
 import javax.swing.*;
@@ -9,6 +11,7 @@ public class GraphicApp
 {
     public static void main(String[] args)
     {
+        framework.Container container = new Container(new Environment());
         //Sidebar
         Sidebar sidebar = new Sidebar();
         sidebar.addButton("a");
