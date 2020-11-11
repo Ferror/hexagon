@@ -10,4 +10,14 @@ public class Currency
         this.name = name;
         this.iso = iso;
     }
+
+    public String getName()
+    {
+        return name;
+    }
+
+    public String getIso()
+    {
+        return iso;
+    }
 }
