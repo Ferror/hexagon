@@ -4,7 +4,6 @@ import domain.currency.CurrencyStorage;
 import framework.Container;
 import framework.Environment;
 import presenter.graphic.button.ButtonActionListener;
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -23,18 +22,20 @@ public class GraphicApp
         //content
         JPanel content = new JPanel();
         Frame view = new Frame(sidebar);
-        content.setLayout(new BoxLayout(content, BoxLayout.Y_AXIS));
 
+        //buttons
         JPanel buttons = new JPanel();
         JButton button = new JButton("button");
-        button.setPreferredSize(new Dimension(100, 20));
-        button.addActionListener(new ButtonActionListener(view));
         JButton button2 = new JButton("button");
 
+        button.setPreferredSize(new Dimension(100, 20));
+        button.addActionListener(new ButtonActionListener(view));
         buttons.setPreferredSize(new Dimension(260, 500));
         buttons.add(button);
         buttons.add(button2);
+        //button
 
+        //table
         JPanel tablePanel = new JPanel();
         Object[] columnNames = storage.getAll().get(0).serialize().keySet().toArray();
         Object[][] data = new Object[storage.getAll().size()][2];
@@ -47,11 +48,14 @@ public class GraphicApp
         JTable table = new JTable(data, columnNames);
         table.getTableHeader().setBackground(Color.WHITE);
         tablePanel.add(new JScrollPane(table));
+        //table
+
+        content.setLayout(new BoxLayout(content, BoxLayout.Y_AXIS));
         content.add(tablePanel);
         content.add(buttons);
-        view.add(content);
         //content
 
+        view.add(content);
         view.setVisible(true);
     }
 }
