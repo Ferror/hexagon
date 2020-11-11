@@ -1,6 +1,7 @@
 package domain;
 
 import java.util.HashMap;
+import java.util.Objects;
 
 public class Currency
 {
@@ -31,5 +32,26 @@ public class Currency
         items.put("iso", this.iso);
 
         return items;
+    }
+
+    @Override
+    public boolean equals(Object o)
+    {
+        if (this == o) {
+            return true;
+        }
+
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+
+        Currency currency = (Currency) o;
+        return name.equals(currency.name) && iso.equals(currency.iso);
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return Objects.hash(name, iso);
     }
 }
