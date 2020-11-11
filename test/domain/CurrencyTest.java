@@ -11,6 +11,12 @@ public class CurrencyTest
     {
         Currency currency = new Currency("Dollar", "USD");
         Assertions.assertEquals("Dollar", currency.getName());
+    }
+
+    @Test
+    public void itGetsIsoCode()
+    {
+        Currency currency = new Currency("Dollar", "USD");
         Assertions.assertEquals("USD", currency.getIso());
     }
 
