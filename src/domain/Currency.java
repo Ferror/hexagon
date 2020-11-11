@@ -1,5 +1,7 @@
 package domain;
 
+import java.util.HashMap;
+
 public class Currency
 {
     private final String name;
@@ -19,5 +21,15 @@ public class Currency
     public String getIso()
     {
         return iso;
+    }
+
+    public HashMap<String, String> serialize()
+    {
+        HashMap<String, String> items = new HashMap<>();
+
+        items.put("name", this.name);
+        items.put("iso", this.iso);
+
+        return items;
     }
 }
