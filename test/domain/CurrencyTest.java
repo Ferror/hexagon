@@ -7,21 +7,21 @@ import java.util.HashMap;
 public class CurrencyTest
 {
     @Test
-    public void itGetsName()
+    public void testItGetsName()
     {
         Currency currency = new Currency("Dollar", "USD");
         Assertions.assertEquals("Dollar", currency.getName());
     }
 
     @Test
-    public void itGetsIsoCode()
+    public void testItGetsIsoCode()
     {
         Currency currency = new Currency("Dollar", "USD");
         Assertions.assertEquals("USD", currency.getIso());
     }
 
     @Test
-    public void itSerializes()
+    public void testItSerializes()
     {
         Currency currency = new Currency("Dollar", "USD");
         HashMap<String, String> items = new HashMap<>();
