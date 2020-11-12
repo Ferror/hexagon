@@ -4,6 +4,7 @@ import domain.Currency;
 import domain.currency.CurrencyStorage;
 import framework.Container;
 import framework.Environment;
+import java.util.Scanner;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,5 +25,14 @@ public class ConsoleApp
         System.out.print(table.render());
         //render body
         //style table
+        String input;
+
+        do {
+            System.out.print("command: ");
+            Scanner scanner = new Scanner(System.in);
+            input = scanner.nextLine();
+        } while (!input.equals("!q"));
+
+        System.out.println("Exited.");
     }
 }
