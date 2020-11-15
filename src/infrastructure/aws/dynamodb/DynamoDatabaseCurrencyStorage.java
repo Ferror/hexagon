@@ -2,9 +2,8 @@ package infrastructure.aws.dynamodb;
 
 import domain.Currency;
 import domain.currency.CurrencyStorage;
-/////////////////////////////////////////////
-import software.amazon.awssdk.services.dynamodb.DynamoDbClient;
 
+import software.amazon.awssdk.services.dynamodb.DynamoDbClient;
 import java.util.List;
 
 public class DynamoDatabaseCurrencyStorage implements CurrencyStorage
