@@ -13,6 +13,10 @@ public class Event
 
     public HashMap<String, String> serialize()
     {
-        return new HashMap<>();
+        HashMap<String, String> map = new HashMap<>();
+
+        map.put("name", this.name);
+
+        return map;
     }
 }

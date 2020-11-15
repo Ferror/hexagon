@@ -2,7 +2,7 @@ package infrastructure.memory;
 
 import domain.Event;
 import domain.EventStore;
-/////////////////////////////////////////////
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,5 +14,10 @@ public class MemoryEventStore implements EventStore
     public void store(Event event)
     {
         this.events.add(event);
+    }
+
+    public List<Event> getAll()
+    {
+        return this.events;
     }
 }
