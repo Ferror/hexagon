@@ -18,7 +18,7 @@ public class MemoryCurrencyStorage implements CurrencyStorage
         currencies.add(new Currency("Euro", "EUR"));
         currencies.add(new Currency("Pound", "GBP"));
 
-        this.currencies = new ArrayList<>();
+        this.currencies = currencies;
     }
 
     @Override
