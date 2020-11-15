@@ -8,15 +8,22 @@ import java.util.List;
 
 public class MemoryCurrencyStorage implements CurrencyStorage
 {
+    private final List<Currency> currencies;
+
+    public MemoryCurrencyStorage()
+    {
+        List<Currency> currencies = new ArrayList<>();
+
+        currencies.add(new Currency("Dollar", "USD"));
+        currencies.add(new Currency("Euro", "EUR"));
+        currencies.add(new Currency("Pound", "GBP"));
+
+        this.currencies = currencies;
+    }
+
     @Override
     public List<Currency> getAll()
     {
-        List<Currency> memoryList = new ArrayList<>();
-
-        memoryList.add(new Currency("Dollar", "USD"));
-        memoryList.add(new Currency("Euro", "EUR"));
-        memoryList.add(new Currency("Pound", "GBP"));
-
-        return memoryList;
+        return this.currencies;
     }
 }
