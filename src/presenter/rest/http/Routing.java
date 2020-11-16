@@ -1,6 +1,7 @@
 package presenter.rest.http;
 
 import presenter.rest.controller.Action;
+import presenter.rest.controller.CurrencyAction;
 import presenter.rest.controller.ExampleAction;
 
 import java.util.ArrayList;
@@ -14,17 +15,9 @@ public class Routing
     public Routing()
     {
         this.routes = new ArrayList<>();
-        this.register();
     }
 
-    private void register()
-    {
-        this.addRouting("/", "GET", new ExampleAction());
-        this.addRouting("/test", "GET", new ExampleAction());
-        this.addRouting("/test", "POST", new ExampleAction());
-    }
-
-    private void addRouting(String route, String method, Action handler)
+    public void addRouting(String route, String method, Action handler)
     {
         HashMap<String, Object> routing = new HashMap<>();
 
