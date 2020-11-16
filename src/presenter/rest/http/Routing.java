@@ -1,4 +1,7 @@
-package presenter.rest.handler;
+package presenter.rest.http;
+
+import presenter.rest.controller.Action;
+import presenter.rest.controller.ExampleAction;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -20,7 +23,7 @@ public class Routing
 
         routing.put("route", "/test");
         routing.put("method", "GET");
-        routing.put("action", new ExampleHandler());
+        routing.put("action", new ExampleAction());
 
         this.routes.add(routing);
 

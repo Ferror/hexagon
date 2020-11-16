@@ -1,12 +1,20 @@
-package presenter.rest.handler;
+package presenter.rest.http;
 
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
+import framework.Container;
 
 import java.io.IOException;
 
 public class FrontendController implements HttpHandler
 {
+    private final Container container;
+
+    public FrontendController(Container container)
+    {
+        this.container = container;
+    }
+
     @Override
     public void handle(HttpExchange exchange) throws IOException
     {
@@ -17,9 +25,8 @@ public class FrontendController implements HttpHandler
 
         Response response = routing.findAction(path, method).handle(request);
 
+        exchange = response.addResponseHeaders(exchange);
         exchange.getResponseHeaders().add("Content-Type", "text/json");
-        exchange.sendResponseHeaders(200, response.length());
-        exchange.getResponseBody().write(response.getBytes());
         exchange.getResponseBody().close();
     }
 }
