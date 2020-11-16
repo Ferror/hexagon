@@ -2,7 +2,7 @@ package domain;
 
 import java.util.HashMap;
 
-public class Event
+public class Event implements Serializable
 {
     private final String name;
 

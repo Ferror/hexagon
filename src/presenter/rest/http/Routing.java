@@ -19,17 +19,20 @@ public class Routing
 
     private void register()
     {
+        this.addRouting("/", "GET", new ExampleAction());
+        this.addRouting("/test", "GET", new ExampleAction());
+        this.addRouting("/test", "POST", new ExampleAction());
+    }
+
+    private void addRouting(String route, String method, Action handler)
+    {
         HashMap<String, Object> routing = new HashMap<>();
 
-        routing.put("route", "/test");
-        routing.put("method", "GET");
-        routing.put("action", new ExampleAction());
+        routing.put("route", route);
+        routing.put("method", method);
+        routing.put("action", handler);
 
         this.routes.add(routing);
-
-//        routing.put("route", "/");
-//        routing.put("method", "GET");
-//        routing.put("action", new ExampleHandler());
     }
 
     public Action findAction(String path, String method)

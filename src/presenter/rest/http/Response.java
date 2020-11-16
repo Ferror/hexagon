@@ -1,8 +1,6 @@
 package presenter.rest.http;
 
 import com.sun.net.httpserver.HttpExchange;
-import com.sun.net.httpserver.HttpsExchange;
-
 import java.io.IOException;
 
 public class Response
