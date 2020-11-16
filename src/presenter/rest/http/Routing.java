@@ -1,7 +1,6 @@
 package presenter.rest.http;
 
 import presenter.rest.controller.Action;
-import presenter.rest.controller.CurrencyAction;
 import presenter.rest.controller.ExampleAction;
 
 import java.util.ArrayList;
@@ -30,11 +29,13 @@ public class Routing
 
     public Action findAction(String path, String method)
     {
-        return (Action) this.routes
-            .stream()
-            .filter(map -> map.get("route").equals(path))
-            .findFirst()
-            .get()
-            .get("action");
+        return new ExampleAction();
+//TODO fix
+//        return (Action) this.routes
+//            .stream()
+//            .filter(map -> map.get("route").equals(path))
+//            .findFirst()
+//            .get()
+//            .get("action");
     }
 }
