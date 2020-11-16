@@ -10,4 +10,10 @@ public class Identifier
     {
         this.identifier = identifier;
     }
+
+    @Override
+    public String toString()
+    {
+        return this.identifier.toString();
+    }
 }
