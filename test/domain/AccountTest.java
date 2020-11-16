@@ -17,7 +17,10 @@ public class AccountTest
         List<Toggle> toggles = new ArrayList<>();
         toggles.add(new Toggle("feature1"));
         toggles.add(new Toggle("feature2"));
-        Account account = new Account(new Identifier(UUID.randomUUID()), toggles);
+        Account account = new Account(
+            new Identifier(UUID.fromString("37ab44a3-5228-437d-a863-b91016da2d08")),
+            toggles
+        );
 
         Assertions.assertTrue(account.isGranted("feature1"));
         Assertions.assertFalse(account.isGranted("not-existing-feature"));
@@ -26,7 +29,10 @@ public class AccountTest
     @Test
     public void testItHasAccess()
     {
-        Account account = new Account(new Identifier(UUID.randomUUID()), new ArrayList<>());
+        Account account = new Account(
+            new Identifier(UUID.fromString("37ab44a3-5228-437d-a863-b91016da2d08")),
+            new ArrayList<>()
+        );
 
         Assertions.assertTrue(account.hasAccess("resource"));
     }
@@ -34,7 +40,10 @@ public class AccountTest
     @Test
     public void testItSerializes()
     {
-        Account account = new Account(new Identifier(UUID.randomUUID()), new ArrayList<>());
+        Account account = new Account(
+            new Identifier(UUID.fromString("37ab44a3-5228-437d-a863-b91016da2d08")),
+            new ArrayList<>()
+        );
         HashMap<String, String> items = new HashMap<>();
         items.put("id", "37ab44a3-5228-437d-a863-b91016da2d08");
         Assertions.assertEquals(items, account.serialize());
