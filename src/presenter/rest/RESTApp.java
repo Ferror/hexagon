@@ -4,6 +4,7 @@ import com.sun.net.httpserver.HttpServer;
 import domain.currency.CurrencyStorage;
 import framework.Container;
 import framework.Environment;
+import presenter.rest.handler.FrontendController;
 import presenter.rest.handler.HomeHandler;
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -14,9 +15,7 @@ public class RESTApp
     {
         Container container = new Container(new Environment());
         HttpServer server = HttpServer.create(new InetSocketAddress("localhost", 8765), 0);
-        server.createContext("/", new HomeHandler(
-            (CurrencyStorage) container.get("domain.currency.CurrencyStorage"))
-        );
+        server.createContext("/", new FrontendController());
         server.setExecutor(null);
         server.start();
     }
