@@ -38,7 +38,6 @@ public class CurrencyTest
         Assertions.assertTrue(currency.equals(currency));
         Assertions.assertFalse(currency.equals(null));
         Assertions.assertFalse(currency.equals(new Object()));
-        Assertions.assertEquals(-793283637, currency.hashCode());
     }
 
     @Test
