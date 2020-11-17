@@ -3,7 +3,7 @@ package presenter.rest.http;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import presenter.rest.controller.FakeAction;
-import presenter.rest.controller.IndexAction;
+import presenter.rest.controller.RouteNotFoundAction;
 
 public class RoutingTest
 {
@@ -15,7 +15,7 @@ public class RoutingTest
         Assertions.assertThrows(Exception.class, () -> routing.findAction("path", "GET"));
 
         routing.addRouting("/test", "GET", new FakeAction());
-        routing.addRouting("/another", "GET", new IndexAction());
+        routing.addRouting("/another", "GET", new RouteNotFoundAction());
 
         try {
             Assertions.assertTrue(routing.findAction("/test", "GET") instanceof FakeAction);
