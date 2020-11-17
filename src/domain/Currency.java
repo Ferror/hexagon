@@ -3,7 +3,7 @@ package domain;
 import java.util.HashMap;
 import java.util.Objects;
 
-public class Currency
+public class Currency implements Serializable
 {
     private final String name;
     private final String iso;
