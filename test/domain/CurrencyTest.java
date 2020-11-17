@@ -29,4 +29,14 @@ public class CurrencyTest
         items.put("iso", "USD");
         Assertions.assertEquals(items, currency.serialize());
     }
+
+    @Test
+    public void testItEquals()
+    {
+        Currency currency = new Currency("Dollar", "USD");
+        Assertions.assertTrue(currency.equals(new Currency("Dollar", "USD")));
+        Assertions.assertTrue(currency.equals(currency));
+        Assertions.assertFalse(currency.equals(null));
+        Assertions.assertFalse(currency.equals(new Object()));
+    }
 }
