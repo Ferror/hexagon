@@ -38,6 +38,7 @@ public class CurrencyTest
         Assertions.assertTrue(currency.equals(currency));
         Assertions.assertFalse(currency.equals(null));
         Assertions.assertFalse(currency.equals(new Object()));
+        Assertions.assertFalse(currency.equals(new Currency("NotCurrency", "NOT")));
     }
 
     @Test
