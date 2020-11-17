@@ -16,6 +16,6 @@ public class CurrencyAction implements Action
     @Override
     public Response handle(Request request)
     {
-        return new Response();
+        return new Response(200, "currency");
     }
 }

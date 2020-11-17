@@ -1,7 +1,6 @@
 package presenter.rest.http;
 
 import presenter.rest.controller.Action;
-import presenter.rest.controller.ExampleAction;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,7 +8,7 @@ import java.util.List;
 
 public class Routing
 {
-    List<HashMap<String, Object>> routes;
+    private final List<HashMap<String, Object>> routes;
 
     public Routing()
     {
@@ -27,15 +26,14 @@ public class Routing
         this.routes.add(routing);
     }
 
-    public Action findAction(String path, String method)
+    public Action findAction(String path, String method) throws Exception
     {
-        return new ExampleAction();
-//TODO fix
-//        return (Action) this.routes
-//            .stream()
-//            .filter(map -> map.get("route").equals(path))
-//            .findFirst()
-//            .get()
-//            .get("action");
+        for (HashMap<String, Object> route : this.routes) {
+            if (route.get("route").equals(path) && route.get("method").equals(method)) {
+                return (Action) route.get("action");
+            }
+        }
+
+        throw new Exception("There is no routes");
     }
 }

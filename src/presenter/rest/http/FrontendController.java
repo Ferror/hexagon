@@ -4,8 +4,10 @@ import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import domain.currency.CurrencyStorage;
 import framework.Container;
+import presenter.rest.controller.Action;
 import presenter.rest.controller.CurrencyAction;
 import presenter.rest.controller.ExampleAction;
+import presenter.rest.controller.RouteNotFoundAction;
 
 import java.io.IOException;
 
@@ -25,11 +27,17 @@ public class FrontendController implements HttpHandler
     public void handle(HttpExchange exchange) throws IOException
     {
         String path = exchange.getRequestURI().getPath();
-        Routing routing = new Routing();
         Request request = new Request();
         String method = "GET";
+        Action action;
 
-        Response response = routing.findAction(path, method).handle(request);
+        try {
+            action = this.routing.findAction(path, method);
+        } catch (Exception exception) {
+            action = new RouteNotFoundAction();
+        }
+
+        Response response = action.handle(request);
 
         exchange = response.addResponseHeaders(exchange);
         exchange.getResponseHeaders().add("Content-Type", "text/json");
