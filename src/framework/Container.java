@@ -22,21 +22,21 @@ public class Container
 
     private void register()
     {
-        this.services.put(
-            "aws.credentials",
-            AwsBasicCredentials.create(
-                this.environment.get("AWS_ACCESS_KEY_ID"),
-                this.environment.get("AWS_SECRET_ACCESS_KEY")
-            )
-        );
-        this.services.put(
-            "aws.dynamodb.eu-west",
-            DynamoDbClient
-                .builder()
-                .region(Region.EU_WEST_1)
-                .credentialsProvider((AwsCredentialsProvider) this.services.get("aws.credentials"))
-                .build()
-        );
+//        this.services.put(
+//            "aws.credentials",
+//            AwsBasicCredentials.create(
+//                this.environment.get("AWS_ACCESS_KEY_ID"),
+//                this.environment.get("AWS_SECRET_ACCESS_KEY")
+//            )
+//        );
+//        this.services.put(
+//            "aws.dynamodb.eu-west",
+//            DynamoDbClient
+//                .builder()
+//                .region(Region.EU_WEST_1)
+//                .credentialsProvider((AwsCredentialsProvider) this.services.get("aws.credentials"))
+//                .build()
+//        );
         this.services.put("domain.currency.CurrencyStorage", new MemoryCurrencyStorage());
     }
 
