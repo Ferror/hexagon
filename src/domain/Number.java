@@ -1,8 +1,8 @@
 package domain;
 
-public class Number
+public class Number implements Updatable<Number>
 {
-    private final Integer value;
+    private Integer value;
 
     public Number(Integer value)
     {
@@ -17,5 +17,11 @@ public class Number
     public Integer toInteger()
     {
         return this.value;
+    }
+
+    @Override
+    public void update(Number self)
+    {
+        this.value = self.value;
     }
 }
