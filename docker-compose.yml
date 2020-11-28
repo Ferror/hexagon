@@ -1,0 +1,76 @@
+version: "3.8"
+services:
+
+    traefik:
+        image: "traefik:2.3"
+        container_name: "traefik"
+        command:
+            - "--log.level=DEBUG"
+            - "--api.insecure=true"
+            - "--providers.docker=true"
+            - "--providers.docker.exposedbydefault=false"
+            - "--entrypoints.web.address=malcherczyk.localhost:80"
+        ports:
+            - "80:80"
+            - "8080:8080"
+        volumes:
+            - "/var/run/docker.sock:/var/run/docker.sock:ro"
+        networks:
+            ferror:
+                ipv4_address: 192.168.10.2
+
+#    dynamodb:
+#        image: amazon/dynamodb-local:1.11.477
+#        command: [ "-jar", "DynamoDBLocal.jar", "-sharedDb" ]
+#        ports:
+#            - "8000:8000"
+#        networks:
+#            - ferror
+#
+#    redis:
+#        image: redis:6.0-alpine
+#        ports:
+#            - "6379:6379"
+#        networks:
+#            - ferror
+#
+#    mysql:
+#        image: mysql:8.0
+#        ports:
+#            - "3306:3306"
+#        networks:
+#            - ferror
+#
+#    postgres:
+#        image: postgres:13-alpine
+#        ports:
+#            - "5432:5432"
+#        networks:
+#            - ferror
+#
+#    influx:
+#        image: influxdb:1.8-alpine
+#        ports:
+#            - "8086:8086"
+#        networks:
+#            - ferror
+
+    hexagon:
+        build:
+            context: ./
+        volumes:
+            - ./:/app:delegated
+        labels:
+            - "traefik.enable=true"
+            - "traefik.frontend.rule=Host:hexagon.malcherczyk.localhost"
+        networks:
+            - ferror
+
+networks:
+    ferror:
+        name: ferror
+        driver: bridge
+        ipam:
+            driver: default
+            config:
+                - subnet: 192.168.10.0/24
