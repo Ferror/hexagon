@@ -3,4 +3,4 @@ compile:
 
 run:
 	mvn clean install
-	mvn exec:java -Dexec.mainClass="presenter.graphic.GraphicApp"
+	exec /usr/bin/supervisord -c /etc/supervisor/supervisord.conf

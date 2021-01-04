@@ -13,7 +13,7 @@ public class RESTApp
     public static void main(String[] args) throws IOException
     {
         Container container = new Container(new Environment());
-        HttpServer server = HttpServer.create(new InetSocketAddress("localhost", 8765), 0);
+        HttpServer server = HttpServer.create(new InetSocketAddress("localhost", 8080), 0);
         server.createContext("/", new FrontendController(container));
         server.setExecutor(null);
         server.start();

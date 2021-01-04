@@ -1,23 +1,33 @@
-version: "3.8"
 services:
-
     traefik:
-        image: "traefik:2.3"
+        image: traefik:2.3
         container_name: "traefik"
         command:
             - "--log.level=DEBUG"
             - "--api.insecure=true"
             - "--providers.docker=true"
             - "--providers.docker.exposedbydefault=false"
-            - "--entrypoints.web.address=malcherczyk.localhost:80"
+            - "--entrypoints.web.address=:80"
         ports:
             - "80:80"
             - "8080:8080"
         volumes:
-            - "/var/run/docker.sock:/var/run/docker.sock:ro"
+            - /var/run/docker.sock:/var/run/docker.sock:ro
         networks:
             ferror:
                 ipv4_address: 192.168.10.2
+
+    hexagon:
+        build:
+            context: ./
+        command: ["make", "run"]
+        volumes:
+            - ./:/app:delegated
+        labels:
+            - "traefik.enable=true"
+            - "traefik.http.routers.vue.rule=Host(`hexagon.malcherczyk.localhost`)"
+        networks:
+            - ferror
 
 #    dynamodb:
 #        image: amazon/dynamodb-local:1.11.477
@@ -54,17 +64,13 @@ services:
 #            - "8086:8086"
 #        networks:
 #            - ferror
-
-    hexagon:
-        build:
-            context: ./
-        volumes:
-            - ./:/app:delegated
-        labels:
-            - "traefik.enable=true"
-            - "traefik.frontend.rule=Host:hexagon.malcherczyk.localhost"
-        networks:
-            - ferror
+#
+#    rethinkdb:
+#        image: rethinkdb:2.4
+#        ports:
+#            - "28015:28015"
+#        networks:
+#            - ferror
 
 networks:
     ferror:

@@ -1,14 +1,13 @@
-FROM ubuntu:21.04
-RUN apt-get update
-RUN apt-get install -y maven default-jdk
+FROM ubuntu:20.04
+ARG DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update && apt-get install -y maven default-jdk supervisor make nginx
+
+RUN apt-get clean && apt-get autoclean
+
+COPY nginx.conf /etc/nginx/nginx.conf
+COPY supervisor.conf /etc/supervisor/conf.d/supervisor.conf
 
 WORKDIR /app
-COPY . /app
-
-#RUN export DISPLAY=:0.0
-RUN mvn clean install
 
 EXPOSE 80
-
-CMD mvn exec:java -Dexec.mainClass="presenter.rest.RESTApp"
-
