@@ -9,5 +9,6 @@ COPY nginx.conf /etc/nginx/nginx.conf
 COPY supervisor.conf /etc/supervisor/conf.d/supervisor.conf
 
 WORKDIR /app
+COPY . /app
 
 EXPOSE 80
