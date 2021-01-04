@@ -1,7 +1,7 @@
 FROM ubuntu:20.04
 ARG DEBIAN_FRONTEND=noninteractive
 
-RUN apt-get update && apt-get install -y maven default-jdk supervisor make nginx
+RUN apt-get update && apt-get install -y maven default-jdk supervisor make nginx jetty9
 
 RUN apt-get clean && apt-get autoclean
 
