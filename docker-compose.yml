@@ -30,8 +30,8 @@ services:
             - ferror
 
 #    dynamodb:
-#        image: amazon/dynamodb-local:1.11.477
-#        command: [ "-jar", "DynamoDBLocal.jar", "-sharedDb" ]
+#        image: amazon/dynamodb-local:1.11
+#        command: ["-jar", "DynamoDBLocal.jar", "-sharedDb"]
 #        ports:
 #            - "8000:8000"
 #        networks:
@@ -58,8 +58,8 @@ services:
 #        networks:
 #            - ferror
 #
-#    influx:
-#        image: influxdb:1.8-alpine
+#    influxdb:
+#        image: influxdb:2.0-alpine
 #        ports:
 #            - "8086:8086"
 #        networks:
@@ -69,6 +69,27 @@ services:
 #        image: rethinkdb:2.4
 #        ports:
 #            - "28015:28015"
+#        networks:
+#            - ferror
+#
+#    grafana:
+#        image: grafana:7.4
+#        ports:
+#            - ""
+#        networks:
+#            - ferror
+#
+#    rabbitmq:
+#        image: rabbitmq:3.8
+#        ports:
+#            - "15672:15672"
+#        networks:
+#            - ferror
+#
+#    mailhog:
+#        image: mailhog:1.0
+#        ports:
+#            - "1025:1025"
 #        networks:
 #            - ferror
 
